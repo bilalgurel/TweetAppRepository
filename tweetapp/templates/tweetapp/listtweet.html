@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{%block content%}
+<br><br>
+    <div class="container" style="padding-top: 50px; width:50%;">
+    {%for tweet in tweets%}
+        <div class="card" style="padding:3px ";>
+            <div class="cardheader" style="background-color: #252F9C; border-radius: 5px;">
+               <h4 style="text-align: center;">{{tweet.username}}</h4> 
+            </div>
+            <div class="card-body" style="background-color: #EFBFA8; border-radius: 5px;">
+                <p class="card-text">{{tweet.message}}</p>
+            </div>
+            {%if tweet.username == user%}
+            <a href="{% url 'tweetapp:deletetweet' id=tweet.id %}" class="btn btn-danger">Delete</a>
+            {%endif%}
+        </div>
+    {%endfor%}
+    </div>
+
+{%endblock%}
